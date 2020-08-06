@@ -6,5 +6,5 @@ def change2monitor(interface):
     os.system('ifconfig ' + interface + ' up')
 
 print("----------------------------------------------------------")
-change2monitor("wlan1")
+change2monitor("wlan2")
 os.system('iwconfig')
