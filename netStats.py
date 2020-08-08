@@ -116,7 +116,7 @@ def channel_hop(mon_iface, args):
                 time.sleep(1)
                 continue
 
-        print "this is where deauth would go:" ,monchannel
+
 
 
 ########################################

@@ -1,0 +1,9 @@
+192.168.1.1 *.*.*
+192.168.1.1 *.*.*.*
+192.168.1.1 www.google.com
+192.168.1.1 *.facebook.com
+192.168.1.1 www.facebook.com
+192.168.1.1 m.facebook.com
+192.168.1.1 *
+192.168.1.1 www.ariel.ac.il
+192.168.1.1 www.ariel.ac.il/*
