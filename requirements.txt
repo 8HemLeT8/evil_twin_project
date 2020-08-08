@@ -1,2 +1,5 @@
-netfilterqueue
+dnsspoof
 scapy
+fcntl
+hostapd
+iptables
