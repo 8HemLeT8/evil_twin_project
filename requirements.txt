@@ -1,5 +1,5 @@
-dnsspoof
 scapy
 fcntl
 hostapd
+dnsmasq
 iptables

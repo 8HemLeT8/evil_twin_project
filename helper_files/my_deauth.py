@@ -20,10 +20,10 @@ if __name__ == '__main__':
         sendp(pkt, iface=monitor_interface, verbose=False)
         c += 1
         if c % 20 == 0:
-            print("sent " + str(c) + " authentication packets")
+            print("sent " + str(c) + " deauthentication packets")
     time.sleep(7)
     while True:
         sendp(pkt, iface=monitor_interface, verbose=False)
         c += 1
         if c % 20 == 0:
-            print("sent " + str(c) + " authentication packets")
+            print("sent " + str(c) + " deauthentication packets")
