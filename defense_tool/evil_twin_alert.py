@@ -283,6 +283,10 @@ def AP_check(addr1, addr2):
 def stop(signal, frame):
     sys.exit('\n['+R+'!'+W+'] Closing')
 
+def change2monitor(interface):
+    os.system('ifconfig ' + interface + ' down')
+    os.system('iwconfig ' + interface + ' mode monitor')
+    os.system('ifconfig ' + interface + ' up')
 
 ########################################
 # End packet handling
@@ -299,6 +303,8 @@ def stop(signal, frame):
 
 
 if __name__ == "__main__":
+    interface = "wlan1"
+    change2monitor(interface)
     if os.geteuid():
         sys.exit('['+R+'-'+W+'] Please run as root')
     clients_APs = []
@@ -308,7 +314,7 @@ if __name__ == "__main__":
     args = parse_args()
     monitor_on = None
     # mon_iface = get_mon_iface(args)
-    mon_iface = "wlan1"
+    mon_iface = interface
     conf.iface = mon_iface
     mon_MAC = mon_mac(mon_iface)
     first_pass = 1

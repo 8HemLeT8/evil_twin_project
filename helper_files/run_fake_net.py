@@ -12,11 +12,7 @@ signal(SIGINT, stop)
 
 os.system('hostapd /root/fap/hostapd.conf')
 os.system('hostapd /root/fap/hostapd.conf')
-os.system('hostapd /root/fap/hostapd.conf')
-os.system('hostapd /root/fap/hostapd.conf')
-os.system('hostapd /root/fap/hostapd.conf')
-os.system('hostapd /root/fap/hostapd.conf')
-os.system('hostapd /root/fap/hostapd.conf')
+
 
 
 

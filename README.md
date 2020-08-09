@@ -1,4 +1,4 @@
-# [evil twin attack]
+# evil twin attack
 To successfully run it, you need:
 - Linux machine ( or VM )
 - python2 and python3 install on your machine
